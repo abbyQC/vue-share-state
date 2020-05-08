@@ -11,16 +11,8 @@
 
 <body>
 
-    <div id="one">
-        <h1>
-            @{{shared.user.name}}
-        </h1>
-    </div>
-
-    <div id="two">
-        <h1>
-            @{{shared.user.name}}
-        </h1>
+    <div id="app">
+        <coupon v-model="coupon"></coupon>
     </div>
 
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>

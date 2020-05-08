@@ -1,21 +1,27 @@
-let store = {
-    user: {
-        name: 'Chang'
+Vue.component('coupon', {
+    props: ['code'],
+    template: `
+    <input type="text" :value="code" @input="updateCode($event.target.value)" ref="input">
+    `,
+    data() {
+        return {
+            invalids: ['ALLFREE', 'SOMETHINGELSE']
+        }
+    },
+    methods: {
+        updateCode(code) {
+            if (this.invalids.includes(code)) {
+                alert('This coupon is no longer valid. Sorry');
+                this.$refs.input.value = code = '';
+            }
+            this.$emit('input', code);
+        }
     }
-};
+});
 new Vue({
-    el: "#one",
+    el: "#app",
     data: {
-        foo: 'bar',
-        shared: store
+        coupon: 'FREEBIE'
     }
 });
 
-new Vue({
-    el: "#two",
-    data: {
-        foo: 'other',
-        shared: store
-    }
-
-});
